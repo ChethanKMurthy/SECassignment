@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chethan K Murthy | Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7fa;
+            color: #333;
+        }
+        header {
+            background-color: #1c3d5a;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: #1c3d5a;
+            padding: 10px;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            padding: 5px 10px;
+            transition: background 0.3s;
+        }
+        nav ul li a:hover {
+            background: #f39c12;
+            border-radius: 5px;
+        }
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 1.1em;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .contact-form {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 80%;
+            max-width: 500px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .contact-form button {
+            background-color: #f39c12;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #e67e22;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Chethan K Murthy</h1>
+        <p>Quantitative Analyst | Founder of Carlsen Capital</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="section fade-in">
+        <h2>About Me</h2>
+        <p>I am a passionate Quantitative Analyst with a deep interest in algorithmic trading, AI, and finance. With a proven track record of success at Carlsen Capital, I specialize in developing innovative financial models and strategies.</p>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section fade-in">
+        <h2>Experience</h2>
+        <p>Worked as a Quantitative Research Analyst at Carlsen Capital, achieving 81% ROI in Q1 2024 by implementing sophisticated trading strategies and mentoring a team of 6 interns.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section fade-in">
+        <h2>Projects</h2>
+        <p>Key projects include: GenAI-Driven Financial Forecasting, Mindsight for mental health, and ARIMA-based Gold ETF Portfolio Optimization.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section fade-in">
+        <h2>Skills</h2>
+        <p>Programming Languages: Python, C++, Java | Tools: TensorFlow, Scikit-learn, AWS | Financial Modeling and Quantitative Analysis.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section fade-in">
+        <h2>Contact Me</h2>
+        <div class="contact-form">
+            <form id="contact-form">
+                <input type="text" name="user_name" placeholder="Your Name" required>
+                <input type="email" name="user_email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Chethan K Murthy. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("your_user_id"); // Replace with your EmailJS user ID
+        })();
+
+        document.addEventListener("scroll", function() {
+            const fadeIns = document.querySelectorAll(".fade-in");
+            fadeIns.forEach(section => {
+                const position = section.getBoundingClientRect();
+                if (position.top < window.innerHeight) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+
+        document.getElementById("contact-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            emailjs.sendForm('your_service_id', 'your_template_id', this)
+                .then(function(response) {
+                    alert('Message sent successfully!');
+                }, function(error) {
+                    alert('Failed to send the message. Please try again later.');
+                });
+        });
+    </script>
+</body>
+</html>
